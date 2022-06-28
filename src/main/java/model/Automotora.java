@@ -95,9 +95,9 @@ public class Automotora {
         return vendedores;
     }
 
-    public void añadirVendedores(){
+    public void añadirVendedores(String nombre,String rut,int edad){
         CalculoRut calculoRut = new CalculoRut();
-        Vendedor vendedor = new Vendedor("German","20.919.321-3",20);
+        Vendedor vendedor = new Vendedor(nombre,rut,edad);
         if (CalculoRut.verificarRut(vendedor.getRut())){
             this.vendedores.add(vendedor);
         }else{
@@ -202,7 +202,7 @@ public class Automotora {
     }
 
     public void probarVenta(){
-        añadirVendedores();
+        //añadirVendedores();
         //añadirClientes();
         añadirVehiculosPorVender();
         añadirVenta("Cliente", "Celerio");
