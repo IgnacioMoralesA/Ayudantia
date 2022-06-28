@@ -1,6 +1,10 @@
 package GUIs;
 
+import model.Automotora;
+
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class VentanaRegistroCliente extends Ventana{
     JPanel panel;
@@ -15,8 +19,7 @@ public class VentanaRegistroCliente extends Ventana{
     JTextField textField3;
     JTextField textField4;
     JTextField textField5;
-    JButton button1;
-    JButton button2;
+    Automotora automotora;
 
     public VentanaRegistroCliente(String nombre, int largoX, int largoY) {
         super(nombre, largoX, largoY);
@@ -58,9 +61,25 @@ public class VentanaRegistroCliente extends Ventana{
     }
 
     private void botonesVentana() {
-        button1 = generarBoton("Registrar Cliente",70,350,150,20);
+        JButton button1 = generarBoton("Registrar Cliente",70,350,150,20);
         this.add(button1);
-        button2 = generarBoton("Cancelar",260,350,150,20);
+        JButton button2 = generarBoton("Cancelar",260,350,150,20);
         this.add(button2);
+        accionBoton(button1,button2);
+    }
+
+    private void accionBoton(JButton button1, JButton button2) {
+        button1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                automotora.añadirClientes(textField1.getText(),textField2.getText(),textField3.getText(),textField4.getText(),textField5.getText());
+            }
+        });
+        button2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                VentanaMenuVentas ventanaMenuVentas = new VentanaMenuVentas("Menu de Ventas",500,500);
+            }
+        });
     }
 }

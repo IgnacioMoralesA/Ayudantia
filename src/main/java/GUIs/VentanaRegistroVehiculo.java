@@ -1,8 +1,12 @@
 package GUIs;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import model.Automotora;
 
 public class VentanaRegistroVehiculo extends Ventana{
+    JFrame jFrame;
     JPanel panel;
     JLabel label1;
     JLabel label2;
@@ -15,8 +19,7 @@ public class VentanaRegistroVehiculo extends Ventana{
     JTextField textField2;
     JTextField textField3;
     JTextField textField4;
-    JButton button1;
-    JButton button2;
+    Automotora automotora;
 
     public VentanaRegistroVehiculo(String nombre, int largoX, int largoY) {
         super(nombre, largoX, largoY);
@@ -54,13 +57,32 @@ public class VentanaRegistroVehiculo extends Ventana{
         this.add(textField3);
         textField4 = generarJTextField(200,260,240,20);
         this.add(textField4);
+    }
+
+    private void desplegable1(){
 
     }
 
     private void botonesVentana() {
-        button1 = generarBoton("Registrar Vehículo",70,350,150,20);
+        JButton button1 = generarBoton("Registrar Vehículo",70,350,150,20);
         this.add(button1);
-        button2 = generarBoton("Cancelar",260,350,150,20);
+        JButton button2 = generarBoton("Cancelar",260,350,150,20);
         this.add(button2);
+        accionBotones(button1,button2);
+    }
+
+    private void accionBotones(JButton button1, JButton button2) {
+        button1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //automotora.añadirVehiculos(textField1.getText(),textField2.getColumns(),textField3.getColumns(),textField4.getColumns());
+            }
+        });
+        button2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                VentanaMenuVentas ventanaMenuVentas = new VentanaMenuVentas("Menu de Ventas",500,500);
+            }
+        });
     }
 }

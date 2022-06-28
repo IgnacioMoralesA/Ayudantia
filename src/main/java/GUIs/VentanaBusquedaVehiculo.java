@@ -1,12 +1,20 @@
 package GUIs;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import model.Automotora;
 
-public class VentanaBusquedaVehiculo extends Ventana{
+public class VentanaBusquedaVehiculo extends Ventana {
+    Automotora automotora;
     JPanel panel;
     JLabel label1;
     JLabel label2;
     JTextField textField1;
+    JTextField textField2;
     JButton button1;
     JButton button2;
 
@@ -35,7 +43,8 @@ public class VentanaBusquedaVehiculo extends Ventana{
     private void camposTextoVentana() {
         textField1 = generarJTextField(200,60,240,20);
         this.add(textField1);
-
+        textField2 = generarJTextField(200,110,240,20);
+        this.add(textField2);
     }
 
     private void botonesVentana() {
@@ -47,7 +56,18 @@ public class VentanaBusquedaVehiculo extends Ventana{
     }
 
     private void accionbotones(JButton button1, JButton button2) {
-
+        button1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                automotora.buscarAutoMarca(textField1.getText());
+            }
+        });
+        button2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                VentanaMenuVentas ventanaMenuVentas = new VentanaMenuVentas("Menu de Ventas",500,500);
+            }
+        });
     }
 
 

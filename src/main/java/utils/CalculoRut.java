@@ -1,14 +1,6 @@
 package utils;
 
 public class CalculoRut {
-    public static void main(String[] args) {
-        menu();
-    }
-
-    public static void menu() {
-        String rut = "20.919.321-3";
-        verificarRut(rut);
-    }
 
     public static boolean verificarRut(String rut) {
         String rutSinDigito = tomarNumeros(rut);

@@ -91,15 +91,6 @@ public class Automotora {
         }
     }
 
-    public void probarSistema(){
-        Automotora automotora= new Automotora();
-        automotora.añadirVehiculosPorVender();
-        automotora.mostrarAutosLista(automotora.buscarAutoNombre("Celerio"));
-        automotora.venderAuto("Celerio",2018);
-        automotora.mostrarAutosLista(automotora.getVehiculosVendidos());
-    }
-
-
     public List<Vendedor> getVendedores() {
         return vendedores;
     }
@@ -138,9 +129,13 @@ public class Automotora {
         return clientes;
     }
 
-    public void añadirClientes(){
+    public void añadirVehiculos(String nombre,ColorVehiculo color,MarcaVehiculo marca,int año,int precio,double kmRecorridos,double cantidadCombustible){
+        Vehiculo vehiculo=new Vehiculo(nombre,color,marca,año,precio,kmRecorridos);
+    }
+
+    public void añadirClientes(String nombre,String rut, String direccion, String correo,String telefono){
         CalculoRut calculoRut = new CalculoRut();
-        Cliente cliente = new Cliente("Cliente","12345678-9","casa","cliente@cliente.cl","123456789");
+        Cliente cliente = new Cliente(nombre,rut,direccion,correo,telefono);
         if (CalculoRut.verificarRut(cliente.getRut())){
             this.clientes.add(cliente);
         }else{
@@ -208,7 +203,7 @@ public class Automotora {
 
     public void probarVenta(){
         añadirVendedores();
-        añadirClientes();
+        //añadirClientes();
         añadirVehiculosPorVender();
         añadirVenta("Cliente", "Celerio");
         añadirVenta("Cliente", "Hilux");
