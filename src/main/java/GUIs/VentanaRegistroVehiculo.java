@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 import model.Automotora;
 
 public class VentanaRegistroVehiculo extends Ventana{
-    JFrame jFrame;
     JPanel panel;
     JLabel label1;
     JLabel label2;
